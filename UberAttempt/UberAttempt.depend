@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1570333930 source:c:\users\zburk\desktop\repositories\foot-traffic\uberattempt\main.cpp
+	<iostream>
+	<fstream>
+
