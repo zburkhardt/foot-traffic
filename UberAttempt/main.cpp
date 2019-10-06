@@ -2,46 +2,33 @@
 #include <fstream>
 
 using namespace std;
-bool trigger = false;
 ifstream inFile;
-
 
 int main()
 {
-	// file pointer
-	fstream fout;
+    ifstream fout;
+    fout.open("rfidData.csv");
 
-	// opens an existing csv file or creates a new file.
-	fout.open("reportcard.csv", ios::out | ios::app);
+    // Check if file failed to open
+    if(!fout.is_open())
+    {
+        cout << "Error opening data file." << endl;
+    }
 
-	cout << "Enter the details of 5 students:"
-		<< " roll name maths phy chem bio";
+    else
+    {
+        cout << "Reading in file data:"
+        string id_tag = "", name = "", room = "", time = "";
 
-	int i, roll, phy, chem, math, bio;
-	string name;
+        // Read in to variables from csv RFID data file
+        while (!(getline(fout,id_tag,',').eof())) {
+            getline(fout,name,',');
+            getline(fout,room,',');
+            getline(fout,time,'\n');
+        }
+    }
 
-	// Read the input
-	for (i = 0; i < 5; i++) {
-
-		cin >> roll
-			>> name
-			>> math
-			>> phy
-			>> chem
-			>> bio;
-
-		// Insert the data to file
-		fout << roll << ", "
-			<< name << ", "
-			<< math << ", "
-			<< phy << ", "
-			<< chem << ", "
-			<< bio
-			<< "\n";
-	}
 	return 0;
-
-
 }
 
 
